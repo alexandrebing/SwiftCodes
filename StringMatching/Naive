@@ -1,4 +1,4 @@
-//NAIVE STRING MATCHER USING CHAR BY CHAR COMPARISON
+//NAIVE STRING MATCHER USING CHAR BY CHAR COMPARISON STILL NEEDS IMPROVEMENT
 func NaiveForce(pattern:String, in text:String){
     let patSize = pattern.characters.count
     let textSize = text.characters.count
