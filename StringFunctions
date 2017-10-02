@@ -1,0 +1,32 @@
+//CHAR AT FUNCTION AND SUBSTRING FUNCTION
+extension String {
+    
+    func Char(at:Int) -> (Character){
+        let startStr = self.index(self.startIndex, offsetBy: at)
+        let endStr = self.index(self.startIndex, offsetBy: at+1)
+        let rangeStr = startStr..<endStr
+        let charStr = self.substring(with: rangeStr)
+        return Character (charStr)
+    }
+    
+    func Substring(from:Int,to:Int) -> String{
+        let startStr = self.index(self.startIndex, offsetBy: from)
+        let endStr = self.index(self.startIndex, offsetBy: to)
+        let rangeStr = startStr..<endStr
+        let substring = self.substring(with: rangeStr)
+        return substring
+    }
+    
+}
+
+//EXAMPLES
+let name = "Alexandre"
+//USING SUBSTRING
+let nickname = name.Substring(from: 0, to: 4)//NICKNAME = ALEX
+
+//USING CHAR FUNCTION TO TAKE CHARACTER AT REQUIRED INDEX
+let middleChar = name.Char(at: (name.characters.count/2))//MIDDLECHAR = 'A'
+let lastChar = name.Char(at: name.characters.count-1) // LASTCHAR = 'E'
+let firstChar = name.Char(at: 0) // FIRSTCHAR = 'A'
+//CONCATENATION OF CHARS 
+let concat = "\(firstChar)\(middleChar)\(lastChar)" //CONCAT = "AAE"
