@@ -1,0 +1,49 @@
+//NAIVE STRING MATCHER USING CHAR BY CHAR COMPARISON
+func NaiveForce(pattern:String, in text:String){
+    let patSize = pattern.characters.count
+    let textSize = text.characters.count
+    var n = 0
+    let end = textSize - patSize
+    for i in 0..<end{
+        let textChar = text.Char(at: i)
+        let patChar = pattern.Char(at: n)
+        if textChar == patChar {
+            n += 1
+            if n == patSize{
+                print("Pattern found in Shift \(i - (patSize-1))")
+                n = 0;
+            }
+        }
+        else{
+            n = 0
+        }
+    }
+}
+
+//NAIVE ALGORITHM WITH EASIER IMPLEMENTATION
+func Naive (pattern: String, in text:String){
+    let n = pattern.characters.count
+    let m = text.characters.count
+    let end = m - n
+    for i in 0...end{
+        let start = text.index(text.startIndex, offsetBy: i)
+        let end = text.index(text.startIndex, offsetBy: i + n)
+        let range = start..<end
+        let seq = text.substring(with: range) //SUBSTRING FUNCTION IN MAIN BRANCH CAN SUBSTITUTE LINES 29 TO 32
+        if (seq == pattern) {
+            print ("Pattern occours with Shift \(i)")
+        }
+    }
+}
+
+//AUXILIARY FUNCTIONS WE NEED - CHAR()
+extension String {
+    
+    func Char(at:Int) -> (Character){
+        let startStr = self.index(self.startIndex, offsetBy: at)
+        let endStr = self.index(self.startIndex, offsetBy: at+1)
+        let rangeStr = startStr..<endStr
+        let charStr = self.substring(with: rangeStr)
+        return Character (charStr)
+    }
+}
